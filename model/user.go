@@ -7,6 +7,6 @@ type User struct {
 }
 
 type UpdateUser struct {
-	Email       string
-	Replacement User
+	Email  string
+	Update User
 }

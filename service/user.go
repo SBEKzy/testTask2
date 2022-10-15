@@ -12,8 +12,8 @@ func (s *service) GetUser(email string) (*model.User, error) {
 	return user, err
 }
 
-func (s *service) UpdateUser(email string, replacementUser *model.User) error {
-	err := s.repo.UpdateUser(email, replacementUser)
+func (s *service) UpdateUser(email string, update *model.User) error {
+	err := s.repo.UpdateUser(email, update)
 	return err
 }
 

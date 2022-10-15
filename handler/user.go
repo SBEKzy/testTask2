@@ -44,7 +44,7 @@ func (h *handler) UpdateUser(c *gin.Context) {
 		return
 	}
 
-	err := h.service.UpdateUser(user.Email, &user.Replacement)
+	err := h.service.UpdateUser(user.Email, &user.Update)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err.Error())
 		return
