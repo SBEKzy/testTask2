@@ -22,7 +22,7 @@ func (r *repository) GetUser(email string) (*model.User, error) {
 func (r *repository) UpdateUser(email string, replacementUser *model.User) error {
 	userCollection := r.db.Collection("users")
 	filter := bson.D{{"email", email}}
-	_, err := userCollection.ReplaceOne(context.TODO(), filter, replacementUser)
+	_, err := userCollection.ReplaceOne(context.TODO(), filter, *replacementUser)
 	return err
 
 }

@@ -7,5 +7,6 @@ type repository struct {
 }
 
 func New(db *mongo.Database) *repository {
+	//collection := db.Collection("users")
 	return &repository{db: db}
 }
