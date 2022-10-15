@@ -19,10 +19,10 @@ func (r *repository) GetUser(email string) (*model.User, error) {
 	return &user, err
 }
 
-func (r *repository) UpdateUser(email string, replacementUser *model.User) error {
+func (r *repository) UpdateUser(email string, update *model.User) error {
 	userCollection := r.db.Collection("users")
 	filter := bson.D{{"email", email}}
-	_, err := userCollection.ReplaceOne(context.TODO(), filter, *replacementUser)
+	_, err := userCollection.UpdateOne(context.TODO(), filter, bson.M{"$set": update})
 	return err
 
 }
