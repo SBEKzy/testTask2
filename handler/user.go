@@ -13,7 +13,7 @@ func (h *handler) CreateUser(c *gin.Context) {
 		return
 	}
 
-	err := h.service.CreateUser(&user)
+	err := h.service.CreateUser(c, &user)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err.Error())
 		return
@@ -29,7 +29,7 @@ func (h *handler) GetUser(c *gin.Context) {
 		return
 	}
 
-	user, err := h.service.GetUser(email)
+	user, err := h.service.GetUser(c, email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err.Error())
 		return
@@ -44,7 +44,7 @@ func (h *handler) UpdateUser(c *gin.Context) {
 		return
 	}
 
-	err := h.service.UpdateUser(user.Email, &user.Update)
+	err := h.service.UpdateUser(c, user.Email, &user.Update)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err.Error())
 		return
@@ -60,7 +60,7 @@ func (h *handler) DeleteUser(c *gin.Context) {
 		return
 	}
 
-	err := h.service.DeleteUser(email)
+	err := h.service.DeleteUser(c, email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err.Error())
 		return

@@ -1,23 +1,26 @@
 package service
 
-import "github.com/SBEKzy/testTask2/model"
+import (
+	"github.com/SBEKzy/testTask2/model"
+	"github.com/gin-gonic/gin"
+)
 
-func (s *service) CreateUser(u *model.User) error {
-	err := s.repo.CreateUser(u)
+func (s *service) CreateUser(c *gin.Context, u *model.User) error {
+	err := s.repo.CreateUser(c, u)
 	return err
 }
 
-func (s *service) GetUser(email string) (*model.User, error) {
-	user, err := s.repo.GetUser(email)
+func (s *service) GetUser(c *gin.Context, email string) (*model.User, error) {
+	user, err := s.repo.GetUser(c, email)
 	return user, err
 }
 
-func (s *service) UpdateUser(email string, update *model.User) error {
-	err := s.repo.UpdateUser(email, update)
+func (s *service) UpdateUser(c *gin.Context, email string, update *model.User) error {
+	err := s.repo.UpdateUser(c, email, update)
 	return err
 }
 
-func (s *service) DeleteUser(email string) error {
-	err := s.repo.DeleteUser(email)
+func (s *service) DeleteUser(c *gin.Context, email string) error {
+	err := s.repo.DeleteUser(c, email)
 	return err
 }
